@@ -1,104 +1,63 @@
-/* Estilos Gerais */
+:root {
+  --bg-color: linear-gradient(135deg, #ffd1dc, #ffffff);
+  --text-color: #1a1a1a;
+  --btn-bg: #ffffff;
+  --btn-text: #1a1a1a;
+}
+
+body.dark-mode {
+  --bg-color: linear-gradient(135deg, #2a0033, #000000);
+  --text-color: #f1f1f1;
+  --btn-bg: #222;
+  --btn-text: #f1f1f1;
+}
+
 body {
   margin: 0;
-  padding: 0;
   font-family: 'Montserrat', sans-serif;
-  background-color: #f2f2f2;
-  color: #333;
-  transition: background-color 0.3s, color 0.3s;
+  background: var(--bg-color);
+  background-attachment: fixed;
+  background-repeat: no-repeat;
+  background-size: cover;
+  color: var(--text-color);
+  transition: all 0.3s ease;
+  position: relative;
 }
 
-.container {
-  max-width: 600px;
-  margin: auto;
-  padding: 20px;
-  text-align: center;
+h1, h2 {
+  font-family: 'Bebas Neue', sans-serif;
 }
 
-.logo {
-  width: 120px;
-  margin-bottom: 10px;
+body, p {
+  font-family: 'Montserrat', sans-serif;
 }
 
-h1 {
+.logo-text {
   font-family: 'Lobster', cursive;
-  font-size: 2.2em;
-  margin-bottom: 10px;
 }
 
-p {
-  font-size: 1em;
-  margin-bottom: 20px;
+#logo {
+  width: 100%;
+  max-width: 180px;
+  height: auto;
+  margin: 0 auto 20px;
+  display: block;
 }
 
-.links {
-  display: flex;
-  flex-direction: column;
-  gap: 10px;
-  margin-bottom: 20px;
-}
-
-.btn {
-  background-color: #ffcc00;
-  color: #000;
-  text-decoration: none;
-  padding: 15px;
-  border-radius: 8px;
-  font-weight: bold;
-  transition: background-color 0.3s;
-}
-
-.btn:hover {
-  background-color: #e6b800;
-}
-
-.social-icons {
-  margin-top: 20px;
-}
-
-.social-icons a {
-  margin: 0 10px;
-}
-
-.social-icons img {
-  width: 32px;
-  height: 32px;
-}
-
-/* Rodapé */
-footer {
-  margin-top: 40px;
-  font-size: 0.9em;
-}
-
-/* Modo Escuro */
-body.dark-mode {
-  background-color: #121212;
-  color: #ffffff;
-}
-
-body.dark-mode .btn {
-  background-color: #333333;
-  color: #ffffff;
-}
-
-body.dark-mode .btn:hover {
-  background-color: #555555;
-}
-
-/* Botão de Tema */
+/* Toggle de tema */
 .theme-toggle {
-  position: fixed;
-  top: 10px;
-  right: 10px;
-  z-index: 1000;
+  position: absolute;
+  top: 15px;
+  right: 15px;
+  display: flex;
+  align-items: center;
 }
 
 .switch {
   position: relative;
   display: inline-block;
-  width: 60px;
-  height: 34px;
+  width: 44px;
+  height: 24px;
 }
 
 .switch input {
@@ -108,27 +67,107 @@ body.dark-mode .btn:hover {
 }
 
 .slider {
+  position: absolute;
+  cursor: pointer;
   background-color: #ccc;
   border-radius: 34px;
-  cursor: pointer;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  height: 100%;
-  width: 100%;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
   transition: background-color 0.4s;
 }
 
-.icon-wrapper {
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  height: 24px;
-  width: 24px;
+.slider .icon {
+  position: absolute;
+  height: 18px;
+  width: 18px;
+  left: 3px;
+  top: 3px;
+  border-radius: 50%;
+  background-color: white;
+  background-image: url("img/light-mode.png");
+  background-size: 14px 14px;
+  background-repeat: no-repeat;
+  background-position: center;
+  transition: transform 0.4s ease, background-image 0.4s ease;
 }
 
-#theme-icon {
-  height: 100%;
-  width: 100%;
-  object-fit: contain;
+input:checked + .slider {
+  background-color: #ffcc00;
+}
+
+input:checked + .slider .icon {
+  transform: translateX(20px);
+  background-image: url("img/night-mode.png");
+}
+
+/* Container */
+.container {
+  max-width: 400px;
+  margin: 0 auto;
+  padding: 20px;
+  text-align: center;
+}
+
+.logo {
+  width: 100px;
+  height: auto;
+  margin-bottom: 10px;
+}
+
+h1 {
+  font-size: 1.8rem;
+  margin: 10px 0;
+}
+
+p {
+  font-size: 1rem;
+  margin-bottom: 20px;
+}
+
+.links .btn {
+  display: block;
+  text-decoration: none;
+  background: var(--btn-bg);
+  color: var(--btn-text);
+  padding: 10px 16px;
+  margin: 16px 0;
+  border-radius: 10px;
+  font-size: 0.9rem;
+  font-weight: 600;
+  transition: background 0.3s;
+}
+
+.links .btn:hover {
+  background: #ffcc00;
+  color: #111;
+}
+
+.social-icons {
+  margin-top: 30px;
+  display: flex;
+  justify-content: center;
+  gap: 20px;
+}
+
+.social-icons img {
+  width: 30px;
+  height: 30px;
+  filter: brightness(0) invert(0.3);
+  transition: transform 0.3s, filter 0.3s;
+}
+
+body.dark-mode .social-icons img {
+  filter: brightness(0) invert(1);
+}
+
+.social-icons img:hover {
+  transform: scale(1.1);
+}
+
+footer {
+  margin-top: 30px;
+  font-size: 0.9rem;
+  opacity: 0.8;
 }
