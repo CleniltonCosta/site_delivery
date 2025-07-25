@@ -171,3 +171,32 @@ footer {
   font-size: 0.9rem;
   opacity: 0.8;
 }
+
+@media (max-width: 480px) {
+  .container {
+    padding: 10px;
+  }
+
+  .links .btn {
+    font-size: 1rem;
+    padding: 14px 20px;
+    margin: 12px 0;
+  }
+
+  h1 {
+    font-size: 2rem;
+  }
+
+  p {
+    font-size: 1.1rem;
+  }
+
+  .social-icons img {
+    width: 36px;
+    height: 36px;
+  }
+
+  #logo {
+    max-width: 150px;
+  }
+}
