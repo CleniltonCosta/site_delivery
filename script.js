@@ -1,21 +1,21 @@
 const checkbox = document.getElementById("theme-checkbox");
-const icon = document.getElementById("theme-icon");
+const icon = document.querySelector(".slider .icon");
 
 checkbox.addEventListener("change", () => {
   document.body.classList.toggle("dark-mode");
 
   if (document.body.classList.contains("dark-mode")) {
-    icon.src = "./img/night-mode.png";
+    icon.style.backgroundImage = 'url("img/night-mode.png")';
   } else {
-    icon.src = "./img/light-mode.png";
+    icon.style.backgroundImage = 'url("img/light-mode.png")';
   }
 });
 
-// Iniciar com o ícone correto se o tema escuro estiver ativado
+// Garante que o ícone carregue corretamente no primeiro carregamento
 window.addEventListener("DOMContentLoaded", () => {
   if (document.body.classList.contains("dark-mode")) {
-    icon.src = "./img/night-mode.png";
+    icon.style.backgroundImage = 'url("img/night-mode.png")';
   } else {
-    icon.src = "./img/light-mode.png";
+    icon.style.backgroundImage = 'url("img/light-mode.png")';
   }
 });
